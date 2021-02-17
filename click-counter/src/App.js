@@ -13,7 +13,8 @@ function App() {
     //    conventional, but you can choose any name
     // - if you don't want it in production, there's a way to get rid of these data-test attributes
     <div data-test="component-app" className="App">
-
+      <h1 data-test="counter-display">The counter is currently</h1>
+      <button data-test="increment-button">Increment counter</button>
     </div>
   );
 }
