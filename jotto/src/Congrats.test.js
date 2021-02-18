@@ -12,7 +12,6 @@ const setup = (props={}) => {
 }
 
 test('renders withot error', () => {
-  const wrapper = shallow(<Congrats />);
 
 });
 
