@@ -7,5 +7,6 @@ import App from './App';
 Enzyme.configure({ adapter: new EnzymeAdapter() });
 
 test('renders App component', () => {
-
+  const wrapper = shallow(<App />);
+  
 });
