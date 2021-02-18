@@ -1,7 +1,10 @@
+import React, {useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [count, setCount] = useState(0);
+
   return (
     // - data-test attribute to test rendering
     //    top level elemnt of component
@@ -13,7 +16,10 @@ function App() {
     //    conventional, but you can choose any name
     // - if you don't want it in production, there's a way to get rid of these data-test attributes
     <div data-test="component-app" className="App">
-      <h1 data-test="counter-display">The counter is currently</h1>
+      <h1 data-test="counter-display">
+        The counter is currently&nbsp;
+        <span data-test="count">{count}</span>
+      </h1>
       <button data-test="increment-button">Increment counter</button>
     </div>
   );
