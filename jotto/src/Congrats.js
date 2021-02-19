@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Functional React component for congratulatory message
@@ -6,7 +7,7 @@ import React from 'react';
  * @param {object} props React props
  * @returns {JSX.Element} - Render component (or null if 'success' prop is passed)
  */
-export default (props) => {
+const Congrats = (props) => {
     if(props.success) {
       return (
         <div data-test="component-congrats">
@@ -21,3 +22,9 @@ export default (props) => {
       );
     }
 }
+
+Congrats.propTypes = {
+  success: PropTypes.bool.isRequired,
+};
+
+export default Congrats;
