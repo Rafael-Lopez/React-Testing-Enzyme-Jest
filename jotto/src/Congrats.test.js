@@ -12,7 +12,6 @@ const setup = (props={}) => {
 }
 
 test('renders withot error', () => {
-  //for now this test throws a warning since 'success' prop is require, but not supplied
   const wrapper = setup();
   const component = findByTestAttr(wrapper, "component-congrats");
   expect(component.length).toBe(1);
