@@ -12,11 +12,20 @@ import Input from './Input';
  */
 const setup = (initialState={}) => {
   const store = storeFactory(initialState);
-  const wrapper = shallow(<Input store={store} />);
-  console.log(wrapper.debug());
+  //Because Input is wrapped with connect() for Redux, if we just do something like
+  //  shallow(<Input store={store} />);
+  //then we get the following:
+  //  <ContextProvider value={{...}}>
+  //    <Input store={{...}} dispatch={[Function: dispatch]} />
+  //  </ContextProvider>
+  //which is correct, because the Input component is wrapped by the ContextProvider
+  //higher order component (HOC) by using connect(), in order to allow Input to
+  //access the Redux store.
+  //We use the dive() enzyme function to retrieve the non-DOM child,in other words,
+  //the React child component of the ShallowWrapper. Since we want to test what the
+  //Input component renders, we need to do dive() twice.
+  const wrapper = shallow(<Input store={store} />).dive().dive();
 };
-
-setup();
 
 describe('render', () => {
   describe('word has not been guessed', () => {
