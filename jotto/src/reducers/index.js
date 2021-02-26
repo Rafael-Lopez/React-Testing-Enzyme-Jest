@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import success from './successReducer';
 import guessedWords from './guessedWordsReducer';
+import secretWord from './secretWordReducer';
 
 //Using Object Property Value Shorthand: in JavaScript with ES6/ES2015, if
 //you want to define an object who's keys have the same name as the variables
@@ -9,4 +10,5 @@ import guessedWords from './guessedWordsReducer';
 export default combineReducers({
   success,
   guessedWords,
+  secretWord,
 });
