@@ -58,7 +58,7 @@ describe('guessWord action dispatcher', () => {
       const expectedState = {
         ...initialState,
         success: false,
-        guessedWords: [ ...guessedWords, { guessedWord: unsuccessfulGuess, letterMatchCount: 1} ]
+        guessedWords: [ ...guessedWords, { guessedWord: unsuccessfulGuess, letterMatchCount: 3} ]
       };
 
       store.dispatch( guessWord(unsuccessfulGuess) );
