@@ -1,6 +1,7 @@
 import React from 'react';
 
 import hookActions from './actions/hookActions';
+import Input from './Input';
 import './App.css';
 
 /**
@@ -38,7 +39,11 @@ function App() {
     []
   );
 
-  return <div data-test='component-app'/>
+  return (
+    <div data-test='component-app'>
+      <Input secretWord={state.secretWord} />
+    </div>
+  );
 }
 
 export default App;
