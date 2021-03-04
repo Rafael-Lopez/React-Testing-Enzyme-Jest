@@ -14,10 +14,13 @@ const Input = ( {secretWord} ) => {
           type='text'
           className='mb-2 mx-sm-3'
           placeholder='enter guess'
-        >
+          value={currentGuess}
+          onChange={event => setCurrentGuess(event.target.value)}
+        />
         <button
           data-test='submit-button'
-          className='btn btn-primary mb-2'>
+          className='btn btn-primary mb-2'
+          onclick={evt => evt.preventDefault()}>
           Submit
         </button>
       </form>
