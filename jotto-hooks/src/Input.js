@@ -20,7 +20,11 @@ const Input = ( {secretWord} ) => {
         <button
           data-test='submit-button'
           className='btn btn-primary mb-2'
-          onclick={evt => evt.preventDefault()}>
+          onClick={ evt => {
+            //If we don't call preventDefault(), the form will be submitted and the page refreshed
+            evt.preventDefault();
+            setCurrentGuess('');
+          } }>
           Submit
         </button>
       </form>
