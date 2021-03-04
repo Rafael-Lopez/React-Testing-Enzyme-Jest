@@ -39,4 +39,17 @@ describe('`getSecretWord` calls', () => {
     //check to see if secret word was updated
     expect(mockGetSecretWord).toHaveBeenCalled();
   });
+
+  test('secretWord does not update on App update', () => {
+    const wrapper = setup();
+    //mockGetSecretWord is called after App is mounted, so we need to clear it
+    //in order to test that it doesn't get called again after App is refreshed
+    mockGetSecretWord.mockClear();
+
+    //At the moment, update() doesn't rerender a functional component (so no useEffect call) - but setProps does.
+    //https://github.com/enzymejs/enzyme/issues/2254
+    wrapper.setProps();
+
+    expect(mockGetSecretWord).not.toHaveBeenCalled();
+  });
 });
