@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { findByTestAttr, checkProps } from '../test/testUtils';
+import languageContext from './contexts/languageContext';
 import Congrats from './Congrats';
 
 const defaultProps = { success: false };
@@ -9,13 +10,32 @@ const defaultProps = { success: false };
 /**
 * Factory function to create a ShallowWrapper for the Congrats component.
 * @function setup
-* @param {object} props - Component props specific to this setup.
+* @param {object} testValues - contextValues specific to this setup.
 * @returns {ShallowWrapper}
 */
-const setup = (props={}) => {
-  const setupProps = { ...defaultProps, ...props };
-  return shallow(<Congrats {...setupProps} />)
+const setup = ({ success, language }) => {
+  //Setting some default values in case they are not provided
+  // if language is truthy, it won't bother with the second part (e.g. 'en'), but
+  //if  it's falsy, then it'll use 'en' as the default value for language
+  language = language || 'en';
+  success = success || false;
+
+  return mount(
+    <languageContext.Provider value={language}>
+      <Congrats success={success}/>
+    </languageContext.Provider>
+  );
 }
+
+describe('language picker', () => {
+  test('correctly renders congrats string in English by default', () => {
+
+  });
+
+  test('correctly renders congrats string in emoji', () => {
+
+  });
+});
 
 test('renders without error', () => {
   const wrapper = setup();
