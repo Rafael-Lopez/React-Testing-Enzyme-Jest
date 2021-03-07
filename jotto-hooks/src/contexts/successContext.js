@@ -28,6 +28,10 @@ function useSuccess() {
 function SuccessProvider(props) {
     const [success, setSuccess] = React.useState(false);
 
+    //ensures that we don't re-calculate 'value' any more frequently than we need to.
+    //the use of memoization is the idea of "if a function has the same inputs, don't worry
+    //about re-calculating the function, just return the outputs that you have saved, from
+    //a previous iteration of the function"
     const value = React.useMemo(() => [success, setSuccess], [success]);
 
     return <successContext.Provider value={value} {...props} />
