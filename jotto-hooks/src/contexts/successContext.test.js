@@ -18,6 +18,8 @@ test('useSuccess throws error when not wrapped in SuccessProvider', () => {
 test('useSuccess does not throw error when wrapped in SuccessProvider', () => {
   expect(() => {
     mount(
+      //we don't have to worry about providing a value to SuccessProvider. That's the
+      //great thing about this pattern, the value is embedded
       <successContext.SuccessProvider>
         <FunctionalComponent />
       </successContext.SuccessProvider>
