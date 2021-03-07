@@ -34,6 +34,8 @@ function SuccessProvider(props) {
     //a previous iteration of the function"
     const value = React.useMemo(() => [success, setSuccess], [success]);
 
+    //{...props} is after value={value}, this means that we can pass a 'value' prop, to override
+    //the internal 'value'. See Congrats.test.js
     return <successContext.Provider value={value} {...props} />
 }
 
